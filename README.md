@@ -11,9 +11,8 @@ LibGDX is a cross-platform development framework that acts as a wrapper for the 
 ## Game Loops
 Each target platform with a run configuration receives its own module in the project. Outside of the standard default Android file structure, an AndroidLauncher activity is used to set various options before launching the thread the game runs on, often referred to as the main game loop.
 
-The 'core' module contains all of the components that make up and run the Game Loop. Night Knight's loop begins by initializing the Game class, in this case NightKnight, which serves to select the Screen to display, load assets, and ensure rendering begins. The remaining major components roughly follow the MVC pattern. 
+The 'core' module contains all of the components that make up and run the Game Loop. Night Knight's loop begins by initializing the Game class, in this case NightKnight, which serves to select the Screen to display, load assets, and ensure rendering begins. The remaining major components roughly follow the MVC pattern. A game's game loop and an application's main thread differ mainly in how drawing to the screen is handled. If the underlying hardware was the only determining factor in how fast the game loop was completing, playing the game on faster hardware would result in the game being sped up. This is why rendering methods all use the float deltaTime or runTime parameter. If the world is updated according to the change in time before the last update was made it can adjust itself to ensure framerate independeted gameplay.
 
 #### View
-The View is made up of the Screen and Renderer classes. A Game Screen is similar to an Android activity. They both have a lifecycle, determine what's currently being displayed 
-
+The View is made up of the Screen and Renderer classes. A Game Screen is similar to an Android activity in that it also has a closely monitored life cycle and is what determines what is being displayed. The Screen employs a Renderer to take the updating state representation of the Game (or World/WorldController), and 
 
